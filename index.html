@@ -16,9 +16,12 @@
         }
     </style>
 
+    <!-- daisyUI 5.0.35 CSS file + Tailwind CSS CDN script -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body>
+<body class="font-mulish">
     <!-- navber section starts here -->
     <div class="navber-container  w-3/4 mx-auto">
         <div class="navbar bg-base-100 my-6 flex flex-row justify-between items-center">
@@ -432,12 +435,12 @@
 
 
     <!-- Latest Posts section starts here -->
-    <div class="latest-posts-container w-3/4 mx-auto mt-4">
+    <div class="latest-posts-container w-3/4 mx-auto mt-20">
 
         <!-- Latest Posts header  -->
         <div class="latest-post-header border-2 border-green-600">
-            <h1 class="text-3xl font-bold text-center">Latest Posts</h1>
-            <p class="text-center w-2/4 mx-auto">Yes, you can run unit tests and view the results
+            <h1 class="text-3xl font-extrabold text-center">Latest Posts</h1>
+            <p class="text-center w-2/4 mx-auto mt-6 text-[#6d6d7d]">Yes, you can run unit tests and view the results
                 directly within
                 the
                 app. The
@@ -445,8 +448,29 @@
             </p>
         </div>
         <!-- Latest Posts card container -->
-        <div class="latest-post-card-container border-2 border-blue-600 mt-4  h-48">
+        <div class="latest-post-card-container border-2 border-blue-600 mt-6">
+            <!-- latest post card container dynamic div  -->
+            <div class="latest-post-dynamic-div">
+                <div class="card bg-base-100 w-96 shadow-sm border border-slate-600">
+                    <!-- latest-post-card-image  -->
+                    <figure class="px-4 pt-4">
+                        <img id="latest-post-card-img"
+                            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Shoes"
+                            class="rounded-xl" />
+                    </figure>
+                    <!-- latest-post-card-date  -->
 
+                    <div class="card-body items-center text-center">
+                        <h2 class="card-title">Card Title</h2>
+                        <p>A card component has a figure, a body part, and inside body there are title and actions parts
+                        </p>
+                        <div class="card-actions">
+                            <button class="btn btn-primary">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </div>
