@@ -1,44 +1,16 @@
-const loadDiscussCards = async () => {
-  try {
-    const res = await fetch(
-      "https://openapi.programming-hero.com/api/retro-forum/posts"
-    );
-    if (!res.ok) throw new Error("Failed to fetch data");
-    const data = await res.json();
-    const postsList = data.posts;
-    displayLoadDiscussCards(postsList);
-  } catch (error) {
-    console.error("Error loading discuss cards:", error);
-  }
-};
-loadDiscussCards();
-
-const displayLoadDiscussCards = (postsList) => {
-  const letsDiscussCardContainer = document.getElementById(
-    "letsDiscussCardContainerID"
-  );
-  postsList.forEach((element) => {
-    const dynamicDivLetsDiscuss = document.createElement("div");
-    dynamicDivLetsDiscuss.id = dynamicDivLetsDiscuss;
-    dynamicDivLetsDiscuss.classList = `dynamic-div-lets-discuss flex flex-col md:flex-row  gap-8`;
-    dynamicDivLetsDiscuss.innerHTML = `
-
-                    <!-- card-left  -->
+            <!-- dynamic-div-lets-discuss  -->
+            <div id="dynamicDivLetsDiscuss" class="dynamic-div-lets-discuss flex flex-col md:flex-row  gap-8">
+                <!-- card-left  -->
                 <div class="card-description-container w-full md:w-2/3">
 
                     <div class="card lg:card-side bg-[#f2f2ff] shadow-xl flex flex-row">
                         <!-- card left img container  -->
                         <div id="card-left-img-container" class="card-left-img-container">
                             <div id="left-img" class="left-img mt-6 md:mt-10 pl-3 md:pl-4 relative">
-                                <img id="img-id" src="${
-                                  element?.image
-                                    ? element.image
-                                    : "Image not found !"
-                                }" alt=""
+                                <img id="img-id" src="./images/user.svg" alt=""
                                     class="w-44 md:w-14 h-14 rounded-xl border-2 border-red-600">
                                 <div
-                                    id="onlineIndicator" class="online-indicator w-5 h-5 rounded-full  absolute left-14 md:left-14 -top-2 border-2 border-white">
-                                    
+                                    class="online-indicator w-5 h-5 rounded-full bg-[#10b981] absolute left-14 md:left-14 -top-2 border-2 border-white">
                                 </div>
 
                             </div>
@@ -163,11 +135,7 @@ const displayLoadDiscussCards = (postsList) => {
 
 
                 </div>
-
-
-
-
-                                <!-- card-right  -->
+                <!-- card-right  -->
                 <!-- card right title container mother div  -->
                 <div class="card-title-container w-full md:w-1/3 bg-[#f1f5f9] rounded-2xl p-6">
                     <div class="title-container flex flex-row justify-between items-center ">
@@ -241,15 +209,4 @@ const displayLoadDiscussCards = (postsList) => {
                     </div>
 
                 </div>
-    `;
-    // applying conditional background  color for online indicator
-    const onlineIndicatorDiv =
-      dynamicDivLetsDiscuss.querySelector("#onlineIndicator");
-    if (element.isActive === true) {
-      onlineIndicatorDiv.classList.add("bg-[#10b981]");
-    } else {
-      onlineIndicatorDiv.classList.add("bg-[#dc2626]");
-    }
-    letsDiscussCardContainer.appendChild(dynamicDivLetsDiscuss);
-  });
-};
+            </div>
