@@ -20,13 +20,14 @@ const displayLoadDiscussCards = (postsList) => {
   postsList.forEach((element) => {
     const dynamicDivLetsDiscuss = document.createElement("div");
     dynamicDivLetsDiscuss.id = dynamicDivLetsDiscuss;
-    dynamicDivLetsDiscuss.classList = `dynamic-div-lets-discuss flex flex-col md:flex-row  gap-8`;
+    dynamicDivLetsDiscuss.classList = `dynamic-div-lets-discuss flex flex-col md:flex-row gap-8 `;
     dynamicDivLetsDiscuss.innerHTML = `
 
                     <!-- card-left  -->
-                <div class="card-description-container w-full md:w-2/3">
+                <div class="card-description-container w-full md:w-2/3 ">
 
-                    <div class="card lg:card-side bg-[#f2f2ff] shadow-xl flex flex-row">
+                    <div class="card lg:card-side bg-[#f2f2ff] shadow-sm
+                     flex flex-row mt-5">
                         <!-- card left img container  -->
                         <div id="card-left-img-container" class="card-left-img-container">
                             <div id="left-img" class="left-img mt-6 md:mt-10 pl-3 md:pl-4 relative w-20 h-14">
@@ -35,7 +36,7 @@ const displayLoadDiscussCards = (postsList) => {
                                     ? element.image
                                     : "Image not found !"
                                 }" alt=""
-                                    class=" rounded-xl border-2 border-red-600">
+                                    class=" rounded-xl ">
                                 <div
                                     id="onlineIndicator" class="online-indicator w-5 h-5 rounded-full  absolute left-17  -top-2 border-2 border-white">
                                     
@@ -44,7 +45,7 @@ const displayLoadDiscussCards = (postsList) => {
                             </div>
                         </div>
 
-                        <div class="card-left-body-container">
+                        <div class="card-left-body-container w-full">
                             <!-- card left dynamic div start -->
                             <div class="card-left-dynamic-div p-4 md:p-8">
                                 <!-- top part  -->
@@ -52,29 +53,36 @@ const displayLoadDiscussCards = (postsList) => {
                                     <!-- music  -->
                                     <div class="card-# flex flex-row justify-left items-center gap-1" id="">
                                         <p class="">#</p>
-                                        <p id="hashID" class="">Music</p>
+                                        <p id="hashID" class="">${
+                                          element?.category
+                                            ? element.category
+                                            : "Category not found !"
+                                        }</p>
                                     </div>
                                     <!-- author  -->
                                     <div class="card-author flex flex-row justify-left items-center gap-1">
                                         <p class="">Author:</p>
-                                        <p id="authorID" class="">Awlad Hossain</p>
+                                        <p id="authorID" class="">${
+                                          element?.author?.name
+                                            ? element.author.name
+                                            : "Author not found !"
+                                        }</p>
                                     </div>
 
                                 </div>
 
                                 <!-- title part  -->
-                                <h2 id="card-title" class="card-title md:text-lg font-mulish mt-2 text-justify">10 Kids
-                                    Unaware of Their
-                                    Halloween
-                                    Costume</h2>
-                                <p class="card-para text-sm font-mulish mt-2 text-justify">It’s one thing to subject
-                                    yourself to ha
-                                    Halloween costume mishap because, hey that’s your prerogative</p>
+                                <h2 id="card-title" class="card-title md:text-lg font-mulish mt-2 ">${
+                                  element.title
+                                }</h2>
+                                <p class="card-para text-sm font-mulish w-full mt-2 ">${
+                                  element.description
+                                }</p>
                                 <!-- hr line  -->
                                 <hr class="border-t border-dotted border-gray-400 my-4">
 
                                 <!-- card-bottom  -->
-                                <div class="card-bottom-container flex flex-row justify-between gap-2 md:gap-8">
+                                <div class="card-bottom-container flex flex-row justify-between ">
                                     <!-- card bottom-left  -->
                                     <div
                                         class="card-bottom-left-container flex flex-row justify-between items-center gap-2 md:gap-4">
@@ -91,7 +99,9 @@ const displayLoadDiscussCards = (postsList) => {
                                                 </svg>
                                             </div>
                                             <div class="value">
-                                                <h2 id="msg-value-id" class="msg-value text-sm font-mulish">500</h2>
+                                                <h2 id="msg-value-id" class="msg-value text-sm font-mulish">${
+                                                  element.comment_count
+                                                }</h2>
                                             </div>
                                         </div>
 
@@ -112,7 +122,9 @@ const displayLoadDiscussCards = (postsList) => {
                                                 </svg>
                                             </div>
                                             <div class="value">
-                                                <h2 id="view-value-id" class="view-value text-sm font-mulish">1568</h2>
+                                                <h2 id="view-value-id" class="view-value text-sm font-mulish">${
+                                                  element.view_count
+                                                }</h2>
                                             </div>
                                         </div>
 
@@ -130,7 +142,9 @@ const displayLoadDiscussCards = (postsList) => {
                                                 </svg>
                                             </div>
                                             <div class="value flex flex-row">
-                                                <h2 id="clock-value-id" class="clock-value text-sm font-mulish">5</h2>
+                                                <h2 id="clock-value-id" class="clock-value text-sm font-mulish">${
+                                                  element.posted_time
+                                                }</h2>
                                                 <span class="min text-sm font-mulish">min</span>
                                             </div>
                                         </div>
