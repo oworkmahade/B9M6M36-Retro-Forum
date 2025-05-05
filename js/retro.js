@@ -29,15 +29,15 @@ const displayLoadDiscussCards = (postsList) => {
                     <div class="card lg:card-side bg-[#f2f2ff] shadow-xl flex flex-row">
                         <!-- card left img container  -->
                         <div id="card-left-img-container" class="card-left-img-container">
-                            <div id="left-img" class="left-img mt-6 md:mt-10 pl-3 md:pl-4 relative">
+                            <div id="left-img" class="left-img mt-6 md:mt-10 pl-3 md:pl-4 relative w-20 h-14">
                                 <img id="img-id" src="${
                                   element?.image
                                     ? element.image
                                     : "Image not found !"
                                 }" alt=""
-                                    class="w-44 md:w-14 h-14 rounded-xl border-2 border-red-600">
+                                    class=" rounded-xl border-2 border-red-600">
                                 <div
-                                    id="onlineIndicator" class="online-indicator w-5 h-5 rounded-full  absolute left-14 md:left-14 -top-2 border-2 border-white">
+                                    id="onlineIndicator" class="online-indicator w-5 h-5 rounded-full  absolute left-17  -top-2 border-2 border-white">
                                     
                                 </div>
 
