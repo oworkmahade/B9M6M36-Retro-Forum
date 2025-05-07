@@ -1,10 +1,13 @@
 // global declaration part
 let count = 0;
 
-const loadDiscussCards = async (searchText) => {
+const loadDiscussCards = async (searchText, event) => {
   console.log(searchText);
   try {
-    const url = `https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchText}`;
+    let url = "https://openapi.programming-hero.com/api/retro-forum/posts";
+    if (event instanceof MouseEvent) {
+      url += `?category=${encodeURIComponent(searchText)}`;
+    }
 
     const res = await fetch(url);
 
@@ -237,8 +240,8 @@ function noOfReadItem() {
   document.getElementById("mark-as-read-id").innerText = count;
 }
 
-const searchHandler = () => {
+const searchHandler = (event) => {
   const searchField = document.getElementById("search-id");
   const searchText = searchField.value.trim();
-  loadDiscussCards(searchText);
+  loadDiscussCards(searchText, event);
 };
