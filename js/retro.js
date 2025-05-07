@@ -172,11 +172,8 @@ const displayLoadDiscussCards = (postsList) => {
 
                         </div>
                     </div>
-
-
-                </div>
-
-                </div>
+                      </div>
+              
     `;
     // applying conditional background  color for online indicator
     const onlineIndicatorDiv =
