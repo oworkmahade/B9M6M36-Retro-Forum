@@ -1,3 +1,6 @@
+// global declaration part
+let count = 0;
+
 const loadDiscussCards = async () => {
   try {
     const res = await fetch(
@@ -155,7 +158,7 @@ const displayLoadDiscussCards = (postsList) => {
 
                                         <svg onclick="titleViewed('${title}', ${
       element.view_count
-    })" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+    },event)" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             viewBox="0 0 28 28" fill="none">
                                             <g clip-path="url(#clip0_57_425)">
                                                 <path
@@ -224,4 +227,10 @@ function titleViewed(title, viewCount) {
                         </div>
   `;
   dynamicTitleMother.appendChild(titleDynamicDiv);
+  noOfReadItem(count);
+}
+
+function noOfReadItem() {
+  count = count + 1;
+  document.getElementById("mark-as-read-id").innerText = count;
 }
