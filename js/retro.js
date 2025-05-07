@@ -17,6 +17,9 @@ const displayLoadDiscussCards = (postsList) => {
   const letsDiscussCardContainer = document.getElementById("cardLeftID");
   postsList.forEach((element) => {
     const dynamicDivLetsDiscuss = document.createElement("div");
+
+    // title special character removal
+    const title = element.title.replace(/[^a-zA-Z0-9]/g, " ");
     // dynamicDivLetsDiscuss.id = dynamicDivLetsDiscuss;
     dynamicDivLetsDiscuss.classList = `dynamic-div-lets-discuss flex flex-col md:flex-row gap-8`;
     dynamicDivLetsDiscuss.innerHTML = `
@@ -150,7 +153,9 @@ const displayLoadDiscussCards = (postsList) => {
                                     <!-- card bottom-right  -->
                                     <div class="email">
 
-                                        <svg onclick="" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        <svg onclick="titleViewed('${title}', ${
+      element.view_count
+    })" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             viewBox="0 0 28 28" fill="none">
                                             <g clip-path="url(#clip0_57_425)">
                                                 <path
@@ -186,3 +191,37 @@ const displayLoadDiscussCards = (postsList) => {
     letsDiscussCardContainer.appendChild(dynamicDivLetsDiscuss);
   });
 };
+
+function titleViewed(title, viewCount) {
+  console.log(title);
+  const dynamicTitleMother = document.getElementById(
+    "dynamic-div-mother-title-id"
+  );
+  const titleDynamicDiv = document.createElement("div");
+  titleDynamicDiv.classList = `dynamicDiv-lets-discuss-title flex flex-row justify-between items-center gap-4 p-4 rounded-2xl bg-white  mt-2`;
+  titleDynamicDiv.innerHTML = `
+                          <!-- title  -->
+                        <div class="title text-sm font-mulish">${title}</div>
+
+                        <!-- view-part  -->
+                        <div class="view-part-container flex flex-row justify-center items-center gap-1">
+                            <div class="img">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28"
+                                    fill="none">
+                                    <path
+                                        d="M11.6667 14C11.6667 14.6188 11.9125 15.2123 12.3501 15.6499C12.7877 16.0875 13.3812 16.3333 14 16.3333C14.6188 16.3333 15.2123 16.0875 15.6499 15.6499C16.0875 15.2123 16.3333 14.6188 16.3333 14C16.3333 13.3812 16.0875 12.7877 15.6499 12.3501C15.2123 11.9125 14.6188 11.6667 14 11.6667C13.3812 11.6667 12.7877 11.9125 12.3501 12.3501C11.9125 12.7877 11.6667 13.3812 11.6667 14Z"
+                                        stroke="#12132D" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M24.5 14C21.7 18.6667 18.2 21 14 21C9.8 21 6.3 18.6667 3.5 14C6.3 9.33333 9.8 7 14 7C18.2 7 21.7 9.33333 24.5 14Z"
+                                        stroke="#12132D" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="value">
+                                <h2 id="view-value-id" class="view-value text-sm font-mulish">${viewCount}</h2>
+                            </div>
+                        </div>
+  `;
+  dynamicTitleMother.appendChild(titleDynamicDiv);
+}
