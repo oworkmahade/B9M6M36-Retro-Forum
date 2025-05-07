@@ -4,9 +4,10 @@ let count = 0;
 const loadDiscussCards = async (searchText) => {
   console.log(searchText);
   try {
-    const res = await fetch(
-      "https://openapi.programming-hero.com/api/retro-forum/posts"
-    );
+    const url = `https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchText}`;
+
+    const res = await fetch(url);
+
     if (!res.ok) throw new Error("Failed to fetch data");
     const data = await res.json();
     const postsList = data.posts;
@@ -19,6 +20,7 @@ loadDiscussCards();
 
 const displayLoadDiscussCards = (postsList) => {
   const letsDiscussCardContainer = document.getElementById("cardLeftID");
+  letsDiscussCardContainer.innerHTML = "";
   postsList.forEach((element) => {
     const dynamicDivLetsDiscuss = document.createElement("div");
 
@@ -237,6 +239,6 @@ function noOfReadItem() {
 
 const searchHandler = () => {
   const searchField = document.getElementById("search-id");
-  const searchText = searchField.value;
+  const searchText = searchField.value.trim();
   loadDiscussCards(searchText);
 };
