@@ -126,7 +126,7 @@
                         <div class="relative w-full max-w-xs">
                             <input id="search-id" type="text" placeholder="Search here anything..."
                                 class="text-sm input input-bordered w-full rounded-3xl" />
-                            <button id="search-btn-id"
+                            <button onclick="searchHandler()" id="search-btn-id"
                                 class="bg-[#797DFC] absolute right-1.5 top-1 font-mulish font-semibold rounded-3xl px-4 py-2 text-white active:scale-95 transition-transform">
                                 Search
                             </button>
@@ -137,9 +137,9 @@
                 <div class="banner-body-right  w-full md:w-1/2 ">
 
                     <div
-                        class="banner-body-right-container flex flex-col md:justify-between  bg-white md:mx-32 p-4 md:p-8 rounded-2xl text-[#121111cc] font-mulish">
+                        class="banner-body-right-container flex flex-col md:justify-between  bg-white md:mx-32 p-4 md:p-4 rounded-2xl text-[#121111cc] font-mulish">
                         <!-- Registered User  -->
-                        <div class="RegisteredUsers flex flex-row justify-between md:gap-8 items-center">
+                        <div class="RegisteredUsers flex flex-row justify-between md:gap-4 items-center">
                             <div class="title">
                                 <h1 class="">Registered Users</h1>
                             </div>
@@ -149,7 +149,7 @@
                         </div>
 
                         <!-- Forum  -->
-                        <div class="forum flex flex-row  md:gap-8 justify-between items-center">
+                        <div class="forum flex flex-row  md:gap-4 justify-between items-center">
                             <div class="title">
                                 <h1 class="">Forum</h1>
                             </div>
@@ -159,7 +159,7 @@
                         </div>
 
                         <!-- Topics  -->
-                        <div class="topics flex flex-row  md:gap-8 justify-between items-center">
+                        <div class="topics flex flex-row  md:gap-4 justify-between items-center">
                             <div class="title">
                                 <h1 class="">Topics</h1>
                             </div>
@@ -169,7 +169,7 @@
                         </div>
 
                         <!-- Replies  -->
-                        <div class="replies flex flex-row  md:gap-8 justify-between items-center">
+                        <div class="replies flex flex-row  md:gap-4 justify-between items-center">
                             <div class="title">
                                 <h1 class="">Replies</h1>
                             </div>
@@ -189,7 +189,7 @@
 
 
     <!-- Let’s Discuss section starts here -->
-    <div class=" lets-discuss-container w-3/4 mx-auto mt-24 p-2">
+    <div class=" lets-discuss-container w-3/4 mx-auto mt-24 md:p-2">
         <!-- Let’s Discuss header  -->
         <div class="letsDiscuss-header">
             <h1 class="text-3xl font-bold text-center">Let’s Discuss</h1>
@@ -203,13 +203,9 @@
 
         <!-- Let’s Discuss card mother container -->
         <div id="letsDiscussCardContainerID"
-            class="let's-Discuss-Card-container mt-12 flex flex-row justify-between gap-8 p-2">
+            class="let's-Discuss-Card-container mt-12 flex flex-col md:flex-row justify-between md:gap-8">
             <!-- card left  -->
-            <div id="cardLeftID" class="w-2/3"></div>
-
-
-
-
+            <div id="cardLeftID" class=""></div>
 
 
             <!-- card-right  -->
@@ -252,8 +248,6 @@
                 <!-- Dynamic Div Title Mother container start  -->
                 <div id="dynamic-div-mother-title-id" class="dynamic-div-mother-title container">
                     <!-- Dynamic Div Title start  -->
-
-
                 </div>
                 <!-- Dynamic Div Title Mother container end  -->
             </div>

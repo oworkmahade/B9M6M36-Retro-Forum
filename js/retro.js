@@ -1,7 +1,8 @@
 // global declaration part
 let count = 0;
 
-const loadDiscussCards = async () => {
+const loadDiscussCards = async (searchText) => {
+  console.log(searchText);
   try {
     const res = await fetch(
       "https://openapi.programming-hero.com/api/retro-forum/posts"
@@ -24,17 +25,17 @@ const displayLoadDiscussCards = (postsList) => {
     // title special character removal
     const title = element.title.replace(/[^a-zA-Z0-9]/g, " ");
     // dynamicDivLetsDiscuss.id = dynamicDivLetsDiscuss;
-    dynamicDivLetsDiscuss.classList = `dynamic-div-lets-discuss flex flex-col md:flex-row gap-8`;
+    dynamicDivLetsDiscuss.classList = `dynamic-div-lets-discuss flex flex-col md:flex-row gap-2 md:gap-8`;
     dynamicDivLetsDiscuss.innerHTML = `
 
                     <!-- card-left  -->
-                <div class="card-description-container w-full">
+                <div class="card-description-container w-full ">
 
                     <div class="card lg:card-side bg-[#f2f2ff] shadow-sm
-                     flex flex-row mt-5">
+                     flex flex-row gap-4 mt-5 py-4 md:py-0">
                         <!-- card left img container  -->
                         <div id="card-left-img-container" class="card-left-img-container">
-                            <div id="left-img" class="left-img mt-6 md:mt-10 pl-3 md:pl-4 relative w-20 h-14">
+                            <div id="left-img" class="left-img mt-6 md:mt-10 pl-3 md:pl-4 relative w-16 md:w-20 h-14">
                                 <img id="img-id" src="${
                                   element?.image
                                     ? element.image
@@ -42,8 +43,7 @@ const displayLoadDiscussCards = (postsList) => {
                                 }" alt=""
                                     class=" rounded-xl ">
                                 <div
-                                    id="onlineIndicator" class="online-indicator w-5 h-5 rounded-full  absolute left-17  -top-2 border-2 border-white">
-                                    
+                                    id="onlineIndicator" class="online-indicator w-5 h-5 rounded-full  absolute left-13 md:left-17  -top-2 border-2 border-white">
                                 </div>
 
                             </div>
@@ -51,7 +51,7 @@ const displayLoadDiscussCards = (postsList) => {
 
                         <div class="card-left-body-container w-full">
                             <!-- card left dynamic div start -->
-                            <div class="card-left-dynamic-div p-4 md:p-8">
+                            <div class="card-left-dynamic-div p-4  md:p-8">
                                 <!-- top part  -->
                                 <div class="top-part flex flex-col md:flex-row justify-left items-left md:gap-2 mt-2">
                                     <!-- music  -->
@@ -86,7 +86,7 @@ const displayLoadDiscussCards = (postsList) => {
                                 <hr class="border-t border-dotted border-gray-400 my-4">
 
                                 <!-- card-bottom  -->
-                                <div class="card-bottom-container flex flex-row justify-between ">
+                                <div class="card-bottom-container flex flex-row justify-between  md:gap-4">
                                     <!-- card bottom-left  -->
                                     <div
                                         class="card-bottom-left-container flex flex-row justify-between items-center gap-2 md:gap-4">
@@ -234,3 +234,9 @@ function noOfReadItem() {
   count = count + 1;
   document.getElementById("mark-as-read-id").innerText = count;
 }
+
+const searchHandler = () => {
+  const searchField = document.getElementById("search-id");
+  const searchText = searchField.value;
+  loadDiscussCards(searchText);
+};
