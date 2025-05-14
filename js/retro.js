@@ -159,23 +159,17 @@ const displayLoadDiscussCards = (postsList) => {
                                         </div>
                                     </div>
                                     <!-- card bottom-right  -->
-                                    <div class="email">
+                                    <div class="email flex flex-row justify-center items-center">
 
-                                        <svg onclick="titleViewed('${title}', ${
+                              
+<i id="email-read"  onclick="titleViewed('${title}', ${
       element.view_count
-    },event)" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            viewBox="0 0 28 28" fill="none">
-                                            <g clip-path="url(#clip0_57_425)">
-                                                <path
-                                                    d="M13.9998 0C6.26805 0 9.15527e-05 6.26814 9.15527e-05 13.9999C9.15527e-05 21.7314 6.26805 28 13.9998 28C21.7315 28 27.9999 21.7314 27.9999 13.9999C27.9999 6.26814 21.7315 0 13.9998 0ZM14 4.91741L22.2847 10.0835H5.71542L14 4.91741ZM22.3879 18.333H22.3871C22.3871 19.1616 21.7155 19.8331 20.887 19.8331H7.1131C6.28447 19.8331 5.61303 19.1615 5.61303 18.333V10.4122C5.61303 10.3245 5.62199 10.2393 5.63655 10.1556L13.552 15.0914C13.5617 15.0975 13.5721 15.1016 13.5821 15.1072C13.5925 15.113 13.6032 15.1186 13.6138 15.1239C13.6697 15.1527 13.7273 15.176 13.7862 15.1912C13.7923 15.1929 13.7983 15.1936 13.8044 15.195C13.869 15.2102 13.9344 15.2197 13.9998 15.2197H14.0002C14.0007 15.2197 14.0012 15.2197 14.0012 15.2197C14.0665 15.2197 14.1319 15.2105 14.1965 15.195C14.2026 15.1935 14.2086 15.1929 14.2147 15.1912C14.2735 15.176 14.3309 15.1527 14.3871 15.1239C14.3977 15.1186 14.4084 15.113 14.4188 15.1072C14.4287 15.1016 14.4392 15.0975 14.4489 15.0914L22.3644 10.1556C22.3789 10.2393 22.3879 10.3244 22.3879 10.4122V18.333Z"
-                                                    fill="#10B981" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_57_425">
-                                                    <rect width="28" height="28" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
+    },event)"  class="fa-regular p-1 items-center border border-slate-300 fa-envelope-open rounded-full"></i>
+
+ 
+
+
+
 
                                     </div>
 
@@ -203,8 +197,10 @@ const displayLoadDiscussCards = (postsList) => {
   toggleSpinner(false);
 };
 
-function titleViewed(title, viewCount) {
-  console.log(title);
+function titleViewed(title, viewCount, event) {
+  // email green color
+  const emailRead = document.getElementById("email-read");
+
   const dynamicTitleMother = document.getElementById(
     "dynamic-div-mother-title-id"
   );
@@ -233,9 +229,18 @@ function titleViewed(title, viewCount) {
                                 <h2 id="view-value-id" class="view-value text-sm font-mulish">${viewCount}</h2>
                             </div>
                         </div>
+
+
+                        
   `;
   dynamicTitleMother.appendChild(titleDynamicDiv);
   noOfReadItem(count);
+  readCondition(event);
+}
+
+function readCondition(event) {
+  const read = event.target;
+  read.classList.add("bg-green-500");
 }
 
 function noOfReadItem() {
