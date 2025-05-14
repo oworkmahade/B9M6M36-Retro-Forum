@@ -199,7 +199,11 @@ const displayLoadDiscussCards = (postsList) => {
 
 function titleViewed(title, viewCount, event) {
   // email green color
-  const emailRead = document.getElementById("email-read");
+  const emailGreen = event.target;
+  if (emailGreen.classList.contains("bg-green-300")) {
+    window.alert("Email already Read !");
+    return;
+  }
 
   const dynamicTitleMother = document.getElementById(
     "dynamic-div-mother-title-id"
@@ -240,7 +244,7 @@ function titleViewed(title, viewCount, event) {
 
 function readCondition(event) {
   const read = event.target;
-  read.classList.add("bg-green-500");
+  read.classList.add("bg-green-300");
 }
 
 function noOfReadItem() {
