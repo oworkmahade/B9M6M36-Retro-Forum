@@ -198,6 +198,9 @@ const displayLoadDiscussCards = (postsList) => {
     }
     letsDiscussCardContainer.appendChild(dynamicDivLetsDiscuss);
   });
+
+  // toggle Spinner off
+  toggleSpinner(false);
 };
 
 function titleViewed(title, viewCount) {
@@ -244,4 +247,14 @@ const searchHandler = (event) => {
   const searchField = document.getElementById("search-id");
   const searchText = searchField.value.trim();
   loadDiscussCards(searchText, event);
+  toggleSpinner(true);
+};
+
+const toggleSpinner = (isTrue) => {
+  const loadingSpinner = document.getElementById("spinnerContainerID");
+  if (isTrue) {
+    loadingSpinner.classList.remove("hidden");
+  } else {
+    loadingSpinner.classList.add("hidden");
+  }
 };
