@@ -342,21 +342,21 @@ const showLatest = (latestPost) => {
                             <h1 id="latest-post-date-id" class="text-sm text-[#6d6d7d]">${
                               element?.author?.posted_date
                                 ? element.author.posted_date
-                                : "No date available"
+                                : "No date available !"
                             }</h1>
                         </div>
                     </div>
 
                     <!-- latest-post-card-title  -->
-                    <h1 id="latest-post-title-id" class="text-sm px-5 mt-4 font-mulish font-bold">What will a mars
-                        habitat force that impact in
-                        our daily life!!!</h1>
+                    <h1 id="latest-post-title-id" class="text-sm px-5 mt-4 font-mulish font-bold">${
+                      element?.title ? element.title : "No title available !"
+                    }</h1>
                     <!-- latest-post-card-para  -->
-                    <p id="latest-post-para-id" class="text-sm px-5 mt-4 font-mulish text-[#6d6d7d]">Yes, you can
-                        run
-                        unit tests and view
-                        the results directly
-                        within the app. </p>
+                    <p id="latest-post-para-id" class="text-sm px-5 mt-4 font-mulish text-[#6d6d7d]">${
+                      element?.description
+                        ? element.description
+                        : "No description available !"
+                    }</p>
                     <!-- latest-post-card-bottom  -->
                     <div class="latest-post-card-bottom mx-5 my-4 flex flex-row justify-normal items-center">
                         <!-- latest-post-card-bottom-img  -->
