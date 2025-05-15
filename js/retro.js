@@ -14,7 +14,10 @@ const loadDiscussCards = async (searchText, event) => {
     if (!res.ok) throw new Error("Failed to fetch data");
     const data = await res.json();
     const postsList = data.posts;
+
     displayLoadDiscussCards(postsList);
+    // latest Card Section
+    latestCards();
   } catch (error) {
     console.error("Error loading discuss cards:", error);
   }
@@ -266,4 +269,107 @@ const toggleSpinner = (isTrue) => {
   } else {
     loadingSpinner.classList.add("hidden");
   }
+};
+
+const latestCards = async () => {
+  try {
+    let url =
+      "https://openapi.programming-hero.com/api/retro-forum/latest-posts";
+
+    const res = await fetch(url);
+
+    if (!res.ok) throw new Error("Failed to fetch data");
+    const data = await res.json();
+    const latestPost = data;
+    showLatest(latestPost);
+  } catch (error) {
+    console.error("Error loading latest cards:", error);
+  }
+};
+
+const showLatest = (latestPost) => {
+  const latestCardMotherContainer = document.getElementById(
+    "latest-post-card-container-id"
+  );
+  latestCardMotherContainer.innerHTML = "";
+  latestPost.forEach((element) => {
+    const latestPostDynamicDiv = document.createElement("div");
+    latestPostDynamicDiv.classList = `latest-post-dynamic-div `;
+    latestPostDynamicDiv.innerHTML = `
+                    <div class="card bg-base-100 md:w-72 shadow-sm border border-[#12132D26]">
+                    <!-- latest-post-card-image  -->
+                    <figure class="px-4 pt-4">
+                        <img id="latest-post-card-img"
+                            src="${
+                              element?.cover_image
+                                ? element.cover_image
+                                : "Image not found"
+                            }" alt="Shoes"
+                            class="rounded-xl" />
+                    </figure>
+                    <!-- latest-post-card-date  -->
+                    <div
+                        class="latest-post-card-date-container flex flex-row justify-normal items-center mt-6 gap-2 px-4">
+                        <!-- date img  -->
+                        <div class="img">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none">
+                                <g clip-path="url(#clip0_29_1881)">
+                                    <path
+                                        d="M4 7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H18C18.5304 5 19.0391 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V19C20 19.5304 19.7893 20.0391 19.4142 20.4142C19.0391 20.7893 18.5304 21 18 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V7Z"
+                                        stroke="#12132D" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M16 3V7" stroke="#12132D" stroke-opacity="0.6" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8 3V7" stroke="#12132D" stroke-opacity="0.6" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M4 11H20" stroke="#12132D" stroke-opacity="0.6" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path
+                                        d="M11 16C11 16.2652 11.1054 16.5196 11.2929 16.7071C11.4804 16.8946 11.7348 17 12 17C12.2652 17 12.5196 16.8946 12.7071 16.7071C12.8946 16.5196 13 16.2652 13 16C13 15.7348 12.8946 15.4804 12.7071 15.2929C12.5196 15.1054 12.2652 15 12 15C11.7348 15 11.4804 15.1054 11.2929 15.2929C11.1054 15.4804 11 15.7348 11 16Z"
+                                        stroke="#12132D" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_29_1881">
+                                        <rect width="24" height="24" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <!-- date text  -->
+                        <div class="date">
+                            <h1 id="latest-post-date-id" class="text-sm text-[#6d6d7d]">${
+                              element?.author?.posted_date
+                                ? element.author.posted_date
+                                : "No date available"
+                            }</h1>
+                        </div>
+                    </div>
+
+                    <!-- latest-post-card-title  -->
+                    <h1 id="latest-post-title-id" class="text-sm px-5 mt-4 font-mulish font-bold">What will a mars
+                        habitat force that impact in
+                        our daily life!!!</h1>
+                    <!-- latest-post-card-para  -->
+                    <p id="latest-post-para-id" class="text-sm px-5 mt-4 font-mulish text-[#6d6d7d]">Yes, you can
+                        run
+                        unit tests and view
+                        the results directly
+                        within the app. </p>
+                    <!-- latest-post-card-bottom  -->
+                    <div class="latest-post-card-bottom mx-5 my-4 flex flex-row justify-normal items-center">
+                        <!-- latest-post-card-bottom-img  -->
+                        <div class="latest-post-card-bottom-img w-12 h-12 rounded-full bg-slate-300">
+                            <img id="latest-post-card-bottom-img-id" src="" class="" alt="">
+                        </div>
+                        <div class=" latest-post-card-bottom-name flex flex-col justify-center items-start ml-4">
+                            <div class="name text-sm font-bold">Cameron Williamson</div>
+                            <div class="designation text-sm text-[#6d6d7d]">Unknown</div>
+                        </div>
+                    </div>
+                </div>
+    `;
+    latestCardMotherContainer.appendChild(latestPostDynamicDiv);
+  });
 };
