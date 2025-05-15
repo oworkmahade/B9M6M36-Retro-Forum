@@ -361,11 +361,23 @@ const showLatest = (latestPost) => {
                     <div class="latest-post-card-bottom mx-5 my-4 flex flex-row justify-normal items-center">
                         <!-- latest-post-card-bottom-img  -->
                         <div class="latest-post-card-bottom-img w-12 h-12 rounded-full bg-slate-300">
-                            <img id="latest-post-card-bottom-img-id" src="" class="" alt="">
+                            <img id="latest-post-card-bottom-img-id" src="${
+                              element?.profile_image
+                                ? element.profile_image
+                                : "No image available !"
+                            }" class="rounded-full" alt="">
                         </div>
                         <div class=" latest-post-card-bottom-name flex flex-col justify-center items-start ml-4">
-                            <div class="name text-sm font-bold">Cameron Williamson</div>
-                            <div class="designation text-sm text-[#6d6d7d]">Unknown</div>
+                            <div class="name text-sm font-bold">${
+                              element?.author?.name
+                                ? element.author.name
+                                : "Author name not available !"
+                            }</div>
+                            <div class="designation text-sm text-[#6d6d7d]">${
+                              element?.author?.designation
+                                ? element.author.designation
+                                : "Author designation not available !"
+                            }</div>
                         </div>
                     </div>
                 </div>
